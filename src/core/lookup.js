@@ -24,7 +24,7 @@ const lookup = async (page, lookupService = "https://api64.ipify.org?format=json
     try {
         await page.setBypassCSP(true);
         const functionName = "$ppp_on_lookup_failed";
-        if (!page._pageBindings.has(functionName)) {
+        if (!page._pageBindings?.has(functionName)) {
             await page.exposeFunction(functionName, (failReason) => {
                 console.error(failReason); return;
             });
